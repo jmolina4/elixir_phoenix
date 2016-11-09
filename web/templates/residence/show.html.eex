@@ -1,0 +1,23 @@
+<h2>Show residence</h2>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @residence.name %>
+  </li>
+
+</ul>
+
+
+<h3>Dog List</h3>
+<%= for dog <- @dogs do %>
+  <ul>
+      <li><b>Name:</b> <%= dog.name %></li>
+      <li><b>Age:</b> <%= dog.age %></li>
+  </ul>
+<% end %>
+
+<%= link "New Dog", to: residence_dog_path(@conn, :new, @residence) %>
+<%= link "Edit", to: residence_path(@conn, :edit, @residence) %>
+<%= link "Back", to: residence_path(@conn, :index) %>

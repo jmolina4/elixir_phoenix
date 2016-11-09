@@ -1,0 +1,18 @@
+<h2>Show dog</h2>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @dog.name %>
+  </li>
+
+  <li>
+    <strong>Age:</strong>
+    <%= @dog.age %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: residence_dog_path(@conn, :edit, @residence, @dog) %>
+<%= link "Back", to: residence_dog_path(@conn, :index, @residence) %>
