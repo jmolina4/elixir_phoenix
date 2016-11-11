@@ -1,0 +1,26 @@
+<p><%= link "New User", to: user_path(@conn, :new) %>
+<p><%= link "New Role", to: role_path(@conn, :new) %>
+
+<div class="residence-list">
+  <h3> Residences </h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Actions</th>
+
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+  <%= for residence <- @residences do %>
+      <tr>
+        <td><%= residence.name %></td>
+        <td class="text-right">
+        <%= link "New Dog", to: residence_dog_path(@conn, :create, residence), class: "btn btn-default btn-xs" %>
+      </tr>
+  <% end %>
+    </tbody>
+  </table>
+</div>
+<p><%= link "New Residence", to: residence_path(@conn, :new) %>

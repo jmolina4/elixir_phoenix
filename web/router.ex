@@ -17,11 +17,13 @@ defmodule Dogfamily.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
-    resources "/users", UserController
-    resources "/residences", ResidenceController do
-      resources "/dogs", DogController
+    get "/back_office", BackOfficeController, :index do
+      resources "back_office/users", UserController
+      resources "back_office/roles", RoleController
+      resources "back_office/residences", ResidenceController do
+        resources "/dogs", DogController
+      end
     end
-
   end
 
   # Other scopes may use custom stacks.

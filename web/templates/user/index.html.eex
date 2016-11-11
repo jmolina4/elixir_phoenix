@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>Email</th>
+      <th>Admin</th>
 
       <th></th>
     </tr>
@@ -12,6 +13,7 @@
 <%= for user <- @users do %>
     <tr>
       <td><%= user.email %></td>
+      <td><%= user.role.admin %></td>
 
       <td class="text-right">
         <%= link "Show", to: user_path(@conn, :show, user), class: "btn btn-default btn-xs" %>

@@ -4,6 +4,7 @@ defmodule Dogfamily.DogController do
   alias Dogfamily.Dog
 
   plug :assign_residence
+  plug :put_layout, "back_office.html"
 
   def index(conn, _params) do
     dogs = Repo.all(Dog)
@@ -62,7 +63,7 @@ defmodule Dogfamily.DogController do
 
     conn
     |> put_flash(:info, "Dog deleted successfully.")
-    #|> redirect(to: dog_path(conn, :index))
+    |> redirect(to: residence_dog_path(conn, :index, conn.assigns[:residence]))
   end
 
   defp assign_residence(conn, _opts) do

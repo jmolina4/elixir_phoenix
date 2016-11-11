@@ -5,7 +5,7 @@ defmodule Dogfamily.Repo.Migrations.CreateDog do
     create table(:dogs) do
       add :name, :string
       add :age, :integer
-      add :residence_id, references(:residence)
+      add :residence_id, references(:residences)
 
       timestamps()
     end
