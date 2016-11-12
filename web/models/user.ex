@@ -4,6 +4,7 @@ defmodule Dogfamily.User do
   schema "users" do
     field :email, :string
     field :crypted_password, :string
+    field :password, :string, virtual: true
 
     belongs_to :role, Dogfamily.Role
 
@@ -15,8 +16,10 @@ defmodule Dogfamily.User do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:email, :crypted_password, :role_id])
-    |> validate_required([:email, :crypted_password, :role_id])
+    |> cast(params, [:email, :password, :role_id])
+    |> validate_required([:email, :password, :role_id])
     |> unique_constraint(:email)
+    |> validate_format(:email, ~r/@/)
+    |> validate_length(:password, min: 5)
   end
 end
