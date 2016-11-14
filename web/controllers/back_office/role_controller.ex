@@ -1,6 +1,7 @@
 defmodule Dogfamily.RoleController do
   use Dogfamily.Web, :controller
 
+  plug Dogfamily.Plug.Authenticate
   alias Dogfamily.Role
 
   plug :put_layout, "back_office.html"

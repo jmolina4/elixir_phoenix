@@ -18,9 +18,12 @@ defmodule Dogfamily.Router do
 
     get "/", PageController, :index
     get "/back_office", BackOfficeController, :index do
-      resources "back_office/users", UserController
-      resources "back_office/roles", RoleController
-      resources "back_office/residences", ResidenceController do
+      get "/back_office/login", SessionController, :new
+      post "/back_office/login",  SessionController, :create
+
+      resources "/back_office/users", UserController
+      resources "/back_office/roles", RoleController
+      resources "/back_office/residences", ResidenceController do
         resources "/dogs", DogController
       end
     end

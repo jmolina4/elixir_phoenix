@@ -4,6 +4,7 @@ defmodule Dogfamily.UserController do
   alias Dogfamily.User
   alias Dogfamily.Role
 
+  plug Dogfamily.Plug.Authenticate
   plug :put_layout, "back_office.html"
 
   def index(conn, _params) do
@@ -13,7 +14,7 @@ defmodule Dogfamily.UserController do
 
   def new(conn, _params) do
     changeset = User.changeset(%User{})
-    roles = Repo.all(Role) |> Enum.map(&{&1.id, &1.name})
+    roles = Repo.all(Role) |> Enum.map(&{&1.name, &1.id})
 
     render(conn, "new.html", changeset: changeset, roles: roles)
   end
@@ -22,13 +23,15 @@ defmodule Dogfamily.UserController do
     changeset = User.changeset(%User{}, user_params)
     roles = Repo.all(Role) |> Enum.map(&{&1.name, &1.id})
 
-    case Repo.insert(changeset) do
+    case Dogfamily.Registration.create(changeset, Dogfamily.Repo) do
       {:ok, _user} ->
         conn
-        |> put_flash(:info, "User created successfully.")
+        |> put_flash(:info, "Your account was created")
         |> redirect(to: user_path(conn, :index))
       {:error, changeset} ->
-        render(conn, "new.html", changeset: changeset, roles: roles)
+        conn
+        |> put_flash(:info, "Unable to create account")
+        |> render("new.html", changeset: changeset, roles: roles)
     end
   end
 end
