@@ -4,8 +4,7 @@ defmodule Dogfamily.UserController do
   alias Dogfamily.User
   alias Dogfamily.Role
 
-  require Logger
-
+  plug Dogfamily.Plug.Authenticate
   plug :put_layout, "back_office.html"
 
   def index(conn, _params) do
@@ -23,9 +22,6 @@ defmodule Dogfamily.UserController do
   def create(conn, %{"user" => user_params}) do
     changeset = User.changeset(%User{}, user_params)
     roles = Repo.all(Role) |> Enum.map(&{&1.name, &1.id})
-
-    Logger.debug "changeset: #{inspect(changeset)}"
-    Logger.debug "User params: #{inspect(user_params)}"
 
     case Dogfamily.Registration.create(changeset, Dogfamily.Repo) do
       {:ok, _user} ->
