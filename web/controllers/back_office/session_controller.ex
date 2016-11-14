@@ -1,8 +1,6 @@
 defmodule Dogfamily.SessionController do
   use Dogfamily.Web, :controller
 
-  alias Dogfamily.User
-
   plug :put_layout, "back_office_login.html"
 
   def new(conn, _params) do
@@ -15,7 +13,7 @@ defmodule Dogfamily.SessionController do
       conn
       |> put_session(:current_user, user.id)
       |> put_flash(:info, "Logged in")
-      |> redirect(to: "/")
+      |> redirect(to: back_office_path(conn, :index))
     :error ->
       conn
       |> put_flash(:info, "Wrong email or password")
