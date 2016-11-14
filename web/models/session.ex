@@ -1,6 +1,5 @@
 defmodule Dogfamily.Session do
   alias Dogfamily.User
-  require Logger
 
   def login(params, repo) do
     user = repo.get_by(User, email: String.downcase(params["email"]))
@@ -11,9 +10,6 @@ defmodule Dogfamily.Session do
   end
 
   defp authenticate(user, password) do
-    Logger.debug "Var value: #{inspect(user)}"
-    Logger.debug "Var value: #{inspect(password)}"
-    Logger.debug "Var value: #{inspect(user.password)}"
     case user do
       nil -> false
       _   -> Comeonin.Bcrypt.checkpw(password, user.crypted_password)
