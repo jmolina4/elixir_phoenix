@@ -1,35 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Hello Dogfamily!</title>
+    <title>DogFamily</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.6 -->
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+  <!-- Font Awesome -->
+  <!-- Theme style -->
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
   </head>
+  <body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
 
-  <body>
-    <div class="container">
-      <header class="header">
-        <nav role="navigation">
-          <ul class="nav nav-pills pull-right">
-            <li><%= link "Home", to: back_office_path(@conn, :index) %></li>
-          </ul>
-        </nav>
-        <span class="logo"></span>
-      </header>
+      <%= render_existing view_module(@conn), "_menu.html" %>
+      <!-- Left side column. contains the logo and sidebar -->
+      <%= render_existing view_module(@conn), "_sidebar.html" %>
 
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Main content -->
+        <section class="content">
+          <%= render @view_module, @view_template, assigns %>
+        </section>
+        <!-- /.content -->
+      </div>
 
-      <main role="main">
-        <%= render @view_module, @view_template, assigns %>
-      </main>
+      <%= render_existing view_module(@conn), "_control_sidebar.html" %>
 
-    </div> <!-- /container -->
-    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/js/app.js") %>">
   </body>
 </html>
+
