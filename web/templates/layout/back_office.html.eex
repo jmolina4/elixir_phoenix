@@ -23,7 +23,8 @@
 
       <%= render_existing view_module(@conn), "_menu.html" %>
       <!-- Left side column. contains the logo and sidebar -->
-      <%= render_existing view_module(@conn), "_sidebar.html" %>
+
+      <%= render @view_module, "_sidebar.html", conn: @conn %>
 
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
@@ -36,7 +37,7 @@
 
       <%= render_existing view_module(@conn), "_control_sidebar.html" %>
 
-    <link rel="stylesheet" href="<%= static_path(@conn, "/js/app.js") %>">
+    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>
 

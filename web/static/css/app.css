@@ -1,5 +1,3 @@
 /* This file is for your main application css. */
 
-*= require admin-lte/bootstrap/css/bootstrap
-*= require admin-lte/dist/css/AdminLTE
-*= require admin-lte/dist/css/skins/skin-blue
+@import "bootstrap"
