@@ -3,6 +3,7 @@ defmodule Dogfamily.BackOfficeController do
 
   alias Dogfamily.Residence
 
+  plug Dogfamily.Plug.Authenticate
   plug :put_layout, "back_office.html"
 
   def index(conn, _params) do

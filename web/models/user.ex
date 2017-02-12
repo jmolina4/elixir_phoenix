@@ -17,7 +17,7 @@ defmodule Dogfamily.User do
   def changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:email, :password, :role_id])
-    |> validate_required([:email, :password, :role_id])
+    |> validate_required([:email, :role_id])
     |> unique_constraint(:email)
     |> validate_format(:email, ~r/@/)
     |> validate_length(:password, min: 5)

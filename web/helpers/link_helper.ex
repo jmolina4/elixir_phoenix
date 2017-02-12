@@ -1,6 +1,4 @@
-defmodule Dogfamily.RoleView do
-  use Dogfamily.Web, :view
-
+defmodule Dogfamily.Helpers.LinkHelper do
   def active_link(conn, controllers) do
     active_link(conn, controllers, "active")
   end

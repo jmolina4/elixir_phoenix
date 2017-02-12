@@ -16,6 +16,6 @@ defmodule Dogfamily.Role do
   def changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:name, :admin])
-    |> validate_required([:name, :admin])
+    |> validate_required([:name])
   end
 end

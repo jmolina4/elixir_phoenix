@@ -1,5 +1,32 @@
+<%= if get_flash(@conn, :success) do %>
+  <div class="callout callout-success">
+    <%= get_flash(@conn, :success) %>
+  </div>
+<% end %>
+
+<%= if get_flash(@conn, :error) do %>
+  <div class="callout callout-danger">
+    <%= get_flash(@conn, :error) %>
+  </div>
+<% end %>
+
 <h2>Edit user</h2>
 
-<%= render "form.html", changeset: @changeset, action: user_path(@conn, :update) %>
+<%= form_for @changeset, user_path(@conn, :update, @user), fn f -> %>
+  <div class="form-group">
+    <%= label f, :email, class: "control-label" %>
+    <%= text_input f, :email, class: "form-control" %>
+    <%= error_tag f, :email %>
+  </div>
+
+  <div class="form-group">
+    <%= select(f, :role_id, @roles) %>
+  </div>
+
+  <div class="form-group">
+    <%= submit "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
 
 <%= link "Back", to: user_path(@conn, :index) %>

@@ -4,10 +4,15 @@
 
   <li>
     <strong>Email:</strong>
-    <%= @user.name %>
+    <%= @user.email %>
+  </li>
+  <li>
+    <strong>Role:</strong>
+    <%= @role.name %>
   </li>
 
-  </ul>
+</ul>
 
-<%= link "Edit", to: user_path(@conn, :edit) %>
-<%= link "Back", to: user_path(@conn, :index) %>
+<%= link "Edit", to: user_path(@conn, :edit, @user), class: "btn btn-default" %>
+<%= link "Back", to: user_path(@conn, :index), class: "btn btn-default" %>
+

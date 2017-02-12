@@ -25,4 +25,4 @@
   </tbody>
 </table>
 
-<%= link "New user", to: user_path(@conn, :new) %>
+<%= link "New user", to: user_path(@conn, :new), class: "btn btn-default" %>

@@ -21,10 +21,9 @@
   <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
 
-      <%= render_existing view_module(@conn), "_menu.html" %>
+      <%= render Dogfamily.BackOfficeView, "_menu.html", conn: @conn %>
       <!-- Left side column. contains the logo and sidebar -->
-
-      <%= render @view_module, "_sidebar.html", conn: @conn %>
+      <%= render Dogfamily.BackOfficeView, "_sidebar.html", conn: @conn %>
 
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
@@ -35,7 +34,7 @@
         <!-- /.content -->
       </div>
 
-      <%= render_existing view_module(@conn), "_control_sidebar.html" %>
+      <%= render Dogfamily.BackOfficeView, "_control_sidebar.html", conn: @conn %>
 
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>

@@ -13,7 +13,7 @@
 
   <div class="form-group">
     <%= label f, :admin, class: "control-label" %>
-    <%= checkbox f, :admin, class: "form-control" %>
+    <%= checkbox f, :admin %>
     <%= error_tag f, :admin %>
   </div>
 

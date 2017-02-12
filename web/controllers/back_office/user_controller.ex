@@ -34,4 +34,34 @@ defmodule Dogfamily.UserController do
         |> render("new.html", changeset: changeset, roles: roles)
     end
   end
+
+  def show(conn, %{"id" => id}) do
+    user = Repo.get!(User, id)
+    role = Repo.preload(user, :role).role
+    render(conn, "show.html", user: user, role: role)
+  end
+
+  def edit(conn, %{"id" => id}) do
+    user = Repo.get!(User, id)
+    roles = Repo.all(Role) |> Enum.map(&{&1.name, &1.id})
+    changeset = User.changeset(user)
+    render(conn, "edit.html", user: user, changeset: changeset, roles: roles)
+  end
+
+  def update(conn, %{"id" => id, "user" => user_params}) do
+    user = Repo.get!(User, id)
+    roles = Repo.all(Role) |> Enum.map(&{&1.name, &1.id})
+    changeset = User.changeset(user, user_params)
+
+    case Repo.update(changeset) do
+      { :ok, user } ->
+        conn
+        |> put_flash(:success, "User updated successfully")
+        |> redirect(to: user_path(conn, :show, user))
+      { :error, changeset} ->
+        conn
+        |> put_flash(:error, "Error updating user")
+        |> render("edit.html", user: user, changeset: changeset, roles: roles)
+    end
+  end
 end
