@@ -52,6 +52,7 @@ defmodule Dogfamily.Web do
       import Dogfamily.Router.Helpers
       import Dogfamily.ErrorHelpers
       import Dogfamily.Gettext
+      import Dogfamily.ViewHelper
     end
   end
 
@@ -78,6 +79,4 @@ defmodule Dogfamily.Web do
   defmacro __using__(which) when is_atom(which) do
     apply(__MODULE__, which, [])
   end
-
-  import Dogfamily.Session, only: [current_user: 1, logged_in?: 1]
 end
