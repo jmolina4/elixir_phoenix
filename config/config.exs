@@ -22,6 +22,13 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
+config :guardian, Guardian,
+  issuer: "Dogfamily",
+  ttl: { 30, :days },
+  allowed_drift: 2000,
+  secret_key: "MHcCAQEEIBf2rzY2dTtwPUtOOIMqNWhaxbcJ3AkjCSCz4TTy/C6coAoGCCqGSM49AwEHoUQDQgAE1x8JaccSw7/SmfGtn14y1lbLSGAxmt++cYDnXFCA+8b9t/gK7/e4JOFjIfmOV5yELiwkp1/n411RsDh35JdLjA==",
+  serializer: Dogfamily.GuardianSerializer
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"

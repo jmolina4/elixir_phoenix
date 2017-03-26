@@ -7,17 +7,25 @@ defmodule Dogfamily.SessionController do
     render conn, "new.html"
   end
 
-  def create(conn, %{"session" => session_params}) do
-  case Dogfamily.Session.login(session_params, Dogfamily.Repo) do
-    {:ok, user} ->
-      conn
-      |> put_session(:current_user, user.id)
-      |> put_flash(:info, "Logged in")
-      |> redirect(to: back_office_path(conn, :index))
-    :error ->
-      conn
-      |> put_flash(:info, "Wrong email or password")
-      |> render("new.html")
+  def create(conn, %{"session" => %{"email" => user,
+                                    "password" => pass}}) do
+    case Dogfamily.Auth.login_by_email_and_pass(conn, user, pass,
+                                           repo: Repo) do
+      {:ok, conn} ->
+        logged_in_user = Guardian.Plug.current_resource(conn)
+        conn
+        |> put_flash(:info, "Innlogget")
+        |> redirect(to: back_office_path(conn, :index))
+      {:error, _reason, conn} ->
+        conn
+        |> put_flash(:error, "Wrong username/password")
+        |> render("new.html")
+     end
   end
-end
+
+  def delete(conn, _) do
+    conn
+    |> Guardian.Plug.sign_out
+    |> redirect(to: back_office_path(conn, :index))
+  end
 end

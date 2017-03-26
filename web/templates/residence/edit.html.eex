@@ -3,4 +3,4 @@
 <%= render "form.html", changeset: @changeset,
                         action: residence_path(@conn, :update, @residence) %>
 
-<%= link "Back", to: residence_path(@conn, :index) %>
+<%= link "Back", to: residence_path(@conn, :index), class: "btn btn-default" %>

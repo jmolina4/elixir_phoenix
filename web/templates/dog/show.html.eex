@@ -14,5 +14,5 @@
 
 </ul>
 
-<%= link "Edit", to: residence_dog_path(@conn, :edit, @residence, @dog) %>
-<%= link "Back", to: residence_dog_path(@conn, :index, @residence) %>
+<%= link "Edit", to: residence_dog_path(@conn, :edit, @residence, @dog), class: "btn btn-default" %>
+<%= link "Back", to: residence_dog_path(@conn, :index, @residence), class: "btn btn-default" %>

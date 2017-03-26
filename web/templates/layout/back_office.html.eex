@@ -20,7 +20,6 @@
   </head>
   <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
-
       <%= render Dogfamily.BackOfficeView, "_menu.html", conn: @conn %>
       <!-- Left side column. contains the logo and sidebar -->
       <%= render Dogfamily.BackOfficeView, "_sidebar.html", conn: @conn %>
@@ -37,6 +36,7 @@
       <%= render Dogfamily.BackOfficeView, "_control_sidebar.html", conn: @conn %>
 
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+    <script src="<%= static_path(@conn, "/js/vendor.js") %>"></script>
   </body>
 </html>
 

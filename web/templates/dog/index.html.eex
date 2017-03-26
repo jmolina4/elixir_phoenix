@@ -25,5 +25,5 @@
   </tbody>
 </table>
 
-<%= link "New dog", to: residence_dog_path(@conn, :new, @residence) %>
-<%= link "Go to residence", to: residence_path(@conn, :show, @residence) %>
+<%= link "New dog", to: residence_dog_path(@conn, :new, @residence), class: "btn btn-default" %>
+<%= link "Go to residence", to: residence_path(@conn, :show, @residence), class: "btn btn-default" %>
