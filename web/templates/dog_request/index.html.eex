@@ -1,14 +1,14 @@
 <h1> Doggy </h1>
 
 
-<%= form_for @conn, dog_request_path(@conn, :new), [as: :search], fn f -> %>    
-	<%= text_input f, :brand, class: "form-control" %>    
-    <%= submit "Submit", class: "btn btn-primary" %>  
+<%= form_for @conn, dog_request_path(@conn, :new), [as: :search], fn f -> %>
+	<%= text_input f, :brand, class: "form-control" %>
+    <%= submit "Submit", class: "btn btn-primary" %>
 <% end %>
 
 <h2>Dog Brand list</h2>
-<ul>
 <%= for dog <- @dogs do %>
-	<li><%= dog.name %></li>
+  <%= if dog.photo do %>
+    <img src="<%= Dogfamily.ImageUploader.url({dog.photo, dog})%>" style="width:304px;height:228px;">
+  <% end %>
 <% end %>
-<ul>

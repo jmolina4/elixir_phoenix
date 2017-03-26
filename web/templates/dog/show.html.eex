@@ -12,6 +12,14 @@
     <%= @dog.age %>
   </li>
 
+  <li>
+    <strong>Image:</strong>
+    <p>
+      <img src="<%= Dogfamily.ImageUploader.url({@dog.photo, @dog})%>" style="width:304px;height:228px;">
+    </p>
+  </li>
+</div>
+
 </ul>
 
 <%= link "Edit", to: residence_dog_path(@conn, :edit, @residence, @dog), class: "btn btn-default" %>

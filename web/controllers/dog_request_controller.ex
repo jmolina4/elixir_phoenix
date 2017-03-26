@@ -1,12 +1,13 @@
 defmodule Dogfamily.DogRequestController do
   use Dogfamily.Web, :controller
 
-  alias Dogfamily.Dog 
+  alias Dogfamily.Dog
 
-  def index(conn, _params) do          
-    dogs = Repo.all(Dog)
+  def index(conn, _params) do
+    query = from d in Dogfamily.Dog
+    dogs = Repo.all(query)
     render(conn, "index.html", dogs: dogs)
-  end 
+  end
 
   def new(conn, params) do
     IO.puts(params["search"]["brand"])
