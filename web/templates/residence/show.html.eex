@@ -15,6 +15,7 @@
   <ul>
       <li><b>Name:</b> <%= dog.name %></li>
       <li><b>Age:</b> <%= dog.age %></li>
+      <li><b>Photo:</b> <%= !is_nil(dog.photo) %></li>
   </ul>
 <% end %>
 
