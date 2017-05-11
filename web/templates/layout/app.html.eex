@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -12,8 +12,11 @@
   </head>
 
   <body>
-    <div class="container">      
+    <div class="df_container">
       <main role="main">
+        <div class="header">
+          <img src="images/logo.png" class="logo" height="100" width="100">
+        </div>
         <%= render @view_module, @view_template, assigns %>
       </main>
 
