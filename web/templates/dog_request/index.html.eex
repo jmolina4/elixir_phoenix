@@ -1,16 +1,19 @@
-<div class="searcher-form">
+<div class="searcher-box">
+
   <div class="searcher-title">
     <h1> Doggy </h1>
   </div>
 
-  <%= form_for @conn, dog_request_path(@conn, :new), [class: :searcher, as: :search], fn f -> %>
-    <%= submit "", class: "fa fa-search searcher-submit" %>
-  	<div style="overflow: hidden; padding-right: .5em;">
-      <%= text_input f, :brand, class: "form-control", placeholder: "Brand or Name ..." %>
-    </div>
+  <div class="searcher-form">
+    <%= form_for @conn, dog_request_path(@conn, :new), [class: :searcher, as: :search], fn f -> %>
+      <%= submit "", class: "fa fa-search searcher-submit" %>
+    	<div style="overflow: hidden; padding-right: .5em;">
+        <%= text_input f, :brand, class: "form-control", placeholder: "Brand or Name ..." %>
+      </div>
 
 
-  <% end %>
+    <% end %>
+  </div>
 </div>
 
 <div class="df_photos">
