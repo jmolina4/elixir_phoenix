@@ -9,14 +9,9 @@ exports.config = {
       joinTo: {
        "js/app.js": /^(web\/static\/js)/,
        "js/vendor.js": /^(web\/static\/vendor)|(deps)/
-      },
-      // To change the order of concatenation of files, explicitly mention here
-      order: {
-        before: [
-          "web/static/vendor/jquery.min.js",
-          "web/static/vendor/bootstrap.min.js"
-        ]
       }
+      // To change the order of concatenation of files, explicitly mention here
+
     },
     stylesheets: {
       joinTo: "css/app.css",

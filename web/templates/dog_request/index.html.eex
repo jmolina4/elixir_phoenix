@@ -1,16 +1,23 @@
-<h1> Doggy </h1>
+<div class="searcher-form">
+  <div class="searcher-title">
+    <h1> Doggy </h1>
+  </div>
 
-
-<%= form_for @conn, dog_request_path(@conn, :new), [as: :search], fn f -> %>
-	<%= text_input f, :brand, class: "form-control" %>
-    <%= submit "Submit", class: "btn btn-primary" %>
-<% end %>
-
-<h2>Dog Brand list</h2>
-<%= for dog <- @dogs do %>
-  <%= if dog.photo do %>
-    <div class="dog_photo">
-      <img src="<%= Dogfamily.ImageUploader.url({dog.photo, dog})%>" style="width:304px;height:228px;">
+  <%= form_for @conn, dog_request_path(@conn, :new), [class: :searcher, as: :search], fn f -> %>
+    <%= submit "", class: "fa fa-search searcher-submit" %>
+  	<div style="overflow: hidden; padding-right: .5em;">
+      <%= text_input f, :brand, class: "form-control", placeholder: "Brand or Name ..." %>
     </div>
   <% end %>
-<% end %>
+</div>
+
+<div class="df_photos">
+  <%= for dog <- @dogs do %>
+    <%= if dog.photo do %>
+    <div class="img_wrap">
+      <img class="img_img" src="<%= Dogfamily.ImageUploader.url({dog.photo, dog})%>">
+      <p class="img_description"><%= dog.name %></p>
+    </div>
+    <% end %>
+  <% end %>
+</div>
