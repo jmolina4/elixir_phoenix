@@ -9,6 +9,8 @@
 <h2>Dog Brand list</h2>
 <%= for dog <- @dogs do %>
   <%= if dog.photo do %>
-    <img src="<%= Dogfamily.ImageUploader.url({dog.photo, dog})%>" style="width:304px;height:228px;">
+    <div class="dog_photo">
+      <img src="<%= Dogfamily.ImageUploader.url({dog.photo, dog})%>" style="width:304px;height:228px;">
+    </div>
   <% end %>
 <% end %>

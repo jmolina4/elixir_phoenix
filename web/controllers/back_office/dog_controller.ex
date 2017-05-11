@@ -3,7 +3,6 @@ defmodule Dogfamily.DogController do
 
   alias Dogfamily.Dog
 
-  plug :assign_residence
   plug :put_layout, "back_office.html"
 
   def index(conn, _params) do
@@ -23,7 +22,7 @@ defmodule Dogfamily.DogController do
       {:ok, _dog} ->
         conn
         |> put_flash(:info, "Dog created successfully.")
-        |> redirect(to: residence_dog_path(conn, :index, conn.assigns[:residence]))
+        |> redirect(to: dog_path(conn, :index))
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
@@ -48,7 +47,7 @@ defmodule Dogfamily.DogController do
       {:ok, dog} ->
         conn
         |> put_flash(:info, "Dog updated successfully.")
-        |> redirect(to: residence_dog_path(conn, :show, conn.assigns[:residence], dog))
+        |> redirect(to: dog_path(conn, :show, dog))
       {:error, changeset} ->
         render(conn, "edit.html", dog: dog, changeset: changeset)
     end
@@ -63,16 +62,6 @@ defmodule Dogfamily.DogController do
 
     conn
     |> put_flash(:info, "Dog deleted successfully.")
-    |> redirect(to: residence_dog_path(conn, :index, conn.assigns[:residence]))
-  end
-
-  defp assign_residence(conn, _opts) do
-    case conn.params do
-      %{"residence_id" => residence_id} ->
-        residence = Repo.get(Dogfamily.Residence, residence_id)
-        assign(conn, :residence, residence)
-      _ ->
-        conn
-    end
+    |> redirect(to: dog_path(conn, :index))
   end
 end
