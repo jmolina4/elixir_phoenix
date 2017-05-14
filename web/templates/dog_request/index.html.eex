@@ -4,14 +4,6 @@
     <h1> Doggy </h1>
   </div>
 
-<<<<<<< HEAD
-  <%= form_for @conn, dog_request_path(@conn, :new), [class: :searcher, as: :search], fn f -> %>
-    <%= submit "", class: "fa fa-search searcher-submit" %>
-  	<div style="overflow: hidden; padding-right: .5em;">
-      <%= text_input f, :brand, class: "form-control", placeholder: "Brand or Name ..." %>
-    </div>
-  <% end %>
-=======
   <div class="searcher-form">
     <%= form_for @conn, dog_request_path(@conn, :new), [class: :searcher, as: :search], fn f -> %>
       <%= submit "", class: "fa fa-search searcher-submit" %>
@@ -22,7 +14,6 @@
 
     <% end %>
   </div>
->>>>>>> Better landing
 </div>
 
 <div class="df_photos">

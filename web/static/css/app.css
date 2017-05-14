@@ -1,24 +1,30 @@
 /* This file is for your main application css. */
 * {
-  margin: 0;
-  padding: 0;
-  border: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+html {
+  height: 100%;
 }
 
-.header {
-  width: 100%;
-  height: 120px;
-  padding: 10px;
-}
-
-.logo {
-  float: left;
+body {
+  min-height: 100%;
 }
 
 .searcher-box {
-  height: 100%;
+  height: 950px;
   width: 100%;
   margin: 0 auto;
+  background-image: url("../images/background.png");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .searcher-title {
@@ -41,7 +47,6 @@
 }
 
 .df_photos {
-  padding-top: 100px;
   display: inline-block;
 }
 
@@ -53,8 +58,8 @@
 }
 
 .df_photos img{
-  height: 300px;
-  width: 360px;
+  height: 260px;
+  width: 333px;
 }
 
 .df_photos .img_description {
