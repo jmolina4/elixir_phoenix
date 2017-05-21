@@ -33,9 +33,8 @@ defmodule Dogfamily.Router do
     resources "/users", UserController
     resources "/roles", RoleController
     resources "/brands", BrandController
-    resources "/residences", ResidenceController do
-      resources "/dogs", DogController
-    end
+    resources "/dogs", DogController
+    resources "/residences", ResidenceController
   end
 
   scope "/", Dogfamily do

@@ -8,6 +8,7 @@
       <li class=<%= active_link(@conn, Dogfamily.RoleController) %>><%= link "Roles", to: role_path(@conn, :index) %></li>
       <li class=<%= active_link(@conn, Dogfamily.ResidenceController) %>><%= link "Residences", to: residence_path(@conn, :index) %></li>
       <li class=<%= active_link(@conn, Dogfamily.BrandController) %>><%= link "Brands", to: brand_path(@conn, :index) %></li>
+      <li class=<%= active_link(@conn, Dogfamily.DogController) %>><%= link "Dogs", to: dog_path(@conn, :index) %></li>
     </ul><!-- /.sidebar-menu -->
 
   </div><!-- /.sidebar -->
