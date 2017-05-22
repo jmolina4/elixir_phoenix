@@ -32,34 +32,40 @@ body {
 }
 
 .searcher-form {
+  display: block;
+  font-size: 40px;
   text-align: center;
   width: 30%;
   margin-left: auto;
   margin-right: auto;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  background-color: white
+}
+
+.searcher-form input {
+  margin-left: 5px;
 }
 
 .searcher-submit {
   float: right;
   border: none;
-  background: transparent;
   cursor: pointer;
   height: 100%;
 }
 
-.df_photos {
+.df_photos .img_wrap{
   display: inline-block;
-}
-
-/* relevant styles */
-.df_photos .img_wrap {
   position: relative;
-  height: 100%;
   float: left;
 }
 
 .df_photos img{
-  height: 260px;
-  width: 333px;
+  height: 290px;
+  width: 360px;
+  position: relative;
+  float: left;
 }
 
 .df_photos .img_description {
@@ -72,7 +78,7 @@ body {
   color: #fff;
   visibility: hidden;
   opacity: 0;
-  height: 300px;
+  height: 290px;
   width: 360px;
   text-align: center;
   display: table-cell;
